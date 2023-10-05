@@ -1,10 +1,6 @@
 package ru.practicum.user;
 
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import java.awt.print.Pageable;
-import java.util.List;
 
 @Service
 public class UserService {
