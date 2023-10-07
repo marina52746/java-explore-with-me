@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>stat-server</artifactId>
-
     <dependencies>
         <dependency>
             <groupId>ru.practicum</groupId>

@@ -1,20 +1,43 @@
 package ru.practicum.client;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.DefaultUriBuilderFactory;
+import ru.practicum.hit.HitDto;
+
+import java.time.LocalDateTime;
 
 @Component
-public class StatClient {
-    final RestTemplate template;
-    final String statUrl;
+public class StatClient extends BaseClient {
 
-    public StatClient(RestTemplate template, String statUrl) {
-        this.template = template;
-        this.statUrl = statUrl;
+    @Autowired
+    public StatClient(@Value("http://localhost:9090") String serverUrl, RestTemplateBuilder builder) {
+        super(
+                builder
+                        .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
+                        .requestFactory(HttpComponentsClientHttpRequestFactory::new)
+                        .build()
+        );
     }
 
-    public static void main(String[] args) {
+    public ResponseEntity<Object> createHit(HitDto hitDto) {
+        return post("/hit", hitDto);
+    }
 
+    public ResponseEntity<Object> getStats(LocalDateTime start, LocalDateTime end,
+                                           String[] uris, Boolean unique) {
+        StringBuilder sbPath = new StringBuilder("/stats?start=").append(start)
+                .append("&end=").append(end);
+        if (uris != null) {
+            for (String uri : uris) {
+                sbPath.append("&uris=").append(uri);
+            }
+        }
+        String path = sbPath.append("&unique=").append(unique).toString();
+        return get(path);
     }
 }
-
