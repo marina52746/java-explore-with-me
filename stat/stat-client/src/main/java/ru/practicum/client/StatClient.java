@@ -3,13 +3,15 @@ package ru.practicum.client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import ru.practicum.hit.HitDto;
+import ru.practicum.stat.StatDto;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 public class StatClient extends BaseClient {
@@ -25,11 +27,11 @@ public class StatClient extends BaseClient {
     }
 
     public ResponseEntity<Object> createHit(HitDto hitDto) {
-        return post("/hit", hitDto);
+        return new ResponseEntity<>(post("/hit", hitDto), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Object> getStats(LocalDateTime start, LocalDateTime end,
-                                           String[] uris, Boolean unique) {
+    public ResponseEntity<List<StatDto>> getStats(String start, String end,
+                                                  String[] uris, Boolean unique) {
         StringBuilder sbPath = new StringBuilder("/stats?start=").append(start)
                 .append("&end=").append(end);
         if (uris != null) {
@@ -38,6 +40,7 @@ public class StatClient extends BaseClient {
             }
         }
         String path = sbPath.append("&unique=").append(unique).toString();
-        return get(path);
+        return getStats(path);
     }
+
 }

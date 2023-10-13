@@ -1,8 +1,9 @@
-package ru.practicum.stat;
+package ru.practicum.stat.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ru.practicum.hit.Hit;
+import ru.practicum.stat.StatDto;
 
 import java.time.LocalDateTime;
 import java.util.List;

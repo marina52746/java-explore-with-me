@@ -1,8 +1,13 @@
-package ru.practicum.stat;
+package ru.practicum.stat.controller;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.hit.HitDto;
+import ru.practicum.stat.InputStatDto;
+import ru.practicum.stat.StatDto;
+import ru.practicum.stat.service.StatsService;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -17,8 +22,8 @@ public class StatsController {
     }
 
     @PostMapping(path = "/hit")
-    public HitDto create(@RequestBody HitDto hitDto) {
-        return statsService.create(hitDto);
+    public ResponseEntity<Object> create(@RequestBody HitDto hitDto) {
+        return new ResponseEntity<>(statsService.create(hitDto), HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/stats")

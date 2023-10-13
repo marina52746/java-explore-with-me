@@ -3,6 +3,7 @@ package ru.practicum.client;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,12 +12,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
+import ru.practicum.stat.StatDto;
 
 public class BaseClient {
     protected final RestTemplate rest;
 
     public BaseClient(RestTemplate rest) {
         this.rest = rest;
+    }
+
+    protected ResponseEntity<List<StatDto>> getStats(String uri) {
+        return rest.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<StatDto>>() {
+        });
     }
 
     protected ResponseEntity<Object> get(String path) {
