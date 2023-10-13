@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.category.service.CategoryService;
 import ru.practicum.category.dto.NewCategoryDto;
-
 import javax.validation.Valid;
 
 @RestController
