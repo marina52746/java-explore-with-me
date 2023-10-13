@@ -20,7 +20,6 @@ public class ErrorApi {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
 
-
     public ErrorApi(HttpStatus status, String reason, String message, List<String> errors) {
         this.status = status;
         this.reason = reason;
