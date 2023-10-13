@@ -25,7 +25,7 @@ services:
       - POSTGRES_USER=stat
       - POSTGRES_DB=ewm-stats
 
-  main-service:
+  ewm-service:
     build: main-service
     image: main-service
     stdin_open: true
