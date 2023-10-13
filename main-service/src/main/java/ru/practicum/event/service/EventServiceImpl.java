@@ -10,7 +10,6 @@ import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
 import ru.practicum.client.StatClient;
 import ru.practicum.constants.MyConst;
-import ru.practicum.event.repository.EventRepository;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
 import ru.practicum.event.dto.UpdateEventUserRequest;
@@ -22,6 +21,7 @@ import ru.practicum.event.filter.UserFilter;
 import ru.practicum.event.filter.UserFilterBuilder;
 import ru.practicum.event.mapper.EventMapper;
 import ru.practicum.event.model.Event;
+import ru.practicum.event.repository.EventRepository;
 import ru.practicum.eventRequest.dto.EventRequestStatusUpdateRequest;
 import ru.practicum.eventRequest.dto.EventRequestStatusUpdateResult;
 import ru.practicum.eventRequest.dto.ParticipationRequestDto;
@@ -41,7 +41,8 @@ import ru.practicum.user.repository.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
