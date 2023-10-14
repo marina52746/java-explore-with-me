@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
-import ru.practicum.client.BaseClient;
 import ru.practicum.hit.HitDto;
 import ru.practicum.stat.StatDto;
 
@@ -18,7 +17,7 @@ import java.util.List;
 public class StatClient extends BaseClient {
 
     @Autowired
-    public StatClient(@Value("http://localhost:9090") String serverUrl, RestTemplateBuilder builder) {
+    public StatClient(@Value("http://stats-server:9090") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
@@ -28,7 +27,7 @@ public class StatClient extends BaseClient {
     }
 
     public ResponseEntity<Object> createHit(HitDto hitDto) {
-        return new ResponseEntity<>(post("/hit", hitDto), HttpStatus.CREATED);
+        return post("/hit", hitDto);
     }
 
     public ResponseEntity<List<StatDto>> getStats(String start, String end,
