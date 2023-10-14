@@ -32,7 +32,7 @@ services:
     image: main-service
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    command: wait
     container_name: main-service
     ports:
       - "8080:8080"
@@ -51,6 +51,6 @@ services:
     volumes:
       - /var/lib/postgresql/data/
     environment:
-      - POSTGRES_PASSWORD=ewmdb
-      - POSTGRES_USER=ewmdb
-      - POSTGRES_DB=ewmdb
+      - POSTGRES_PASSWORD=main
+      - POSTGRES_USER=main
+      - POSTGRES_DB=main
