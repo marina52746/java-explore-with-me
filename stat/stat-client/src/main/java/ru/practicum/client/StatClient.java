@@ -6,14 +6,15 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
+import ru.practicum.client.BaseClient;
 import ru.practicum.hit.HitDto;
 import ru.practicum.stat.StatDto;
 
 import java.util.List;
 
-@Component
+@Service
 public class StatClient extends BaseClient {
 
     @Autowired
