@@ -5,17 +5,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import ru.practicum.hit.HitDto;
+import ru.practicum.stat.StatDto;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
-@Component
+@Service
 public class StatClient extends BaseClient {
 
     @Autowired
-    public StatClient(@Value("http://localhost:9090") String serverUrl, RestTemplateBuilder builder) {
+    public StatClient(@Value("http://stats-server:9090") String serverUrl, RestTemplateBuilder builder) {
         super(
                 builder
                         .uriTemplateHandler(new DefaultUriBuilderFactory(serverUrl))
@@ -28,8 +29,8 @@ public class StatClient extends BaseClient {
         return post("/hit", hitDto);
     }
 
-    public ResponseEntity<Object> getStats(LocalDateTime start, LocalDateTime end,
-                                           String[] uris, Boolean unique) {
+    public ResponseEntity<List<StatDto>> getStats(String start, String end,
+                                                  String[] uris, Boolean unique) {
         StringBuilder sbPath = new StringBuilder("/stats?start=").append(start)
                 .append("&end=").append(end);
         if (uris != null) {
@@ -38,6 +39,7 @@ public class StatClient extends BaseClient {
             }
         }
         String path = sbPath.append("&unique=").append(unique).toString();
-        return get(path);
+        return getStats(path);
     }
+
 }

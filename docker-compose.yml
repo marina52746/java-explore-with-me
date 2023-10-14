@@ -1,11 +1,11 @@
 version: '3.8'
 services:
-  stat-server:
-    build: stat/stat-server
-    image: stat-server
+  stats-server:
+    build: stat/stats-server
+    image: stats-server
     stdin_open: true
     tty: true
-    container_name: stat-server
+    container_name: stats-server
     ports:
       - "9090:9090"
     depends_on:
@@ -20,24 +20,25 @@ services:
     container_name: stat-db
     ports:
       - "5432:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
       - POSTGRES_PASSWORD=stat
       - POSTGRES_USER=stat
       - POSTGRES_DB=ewm-stats
 
-  main-service:
+  ewm-service:
     build: main-service
     image: main-service
     stdin_open: true
     tty: true
+    command: wait
     container_name: main-service
     ports:
       - "8080:8080"
     depends_on:
-#      - stat-server
       - ewm-db
     environment:
-#      - CLIENT_URL=http://stat-server:9090
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/main
       - SPRING_DATASOURCE_USERNAME=main
       - SPRING_DATASOURCE_PASSWORD=main
@@ -46,8 +47,10 @@ services:
     image: postgres:14-alpine
     container_name: ewm-db
     ports:
-      - "5440:5432"
+      - "5555:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
-      - POSTGRES_PASSWORD=ewmdb
-      - POSTGRES_USER=ewmdb
-      - POSTGRES_DB=ewmdb
+      - POSTGRES_PASSWORD=main
+      - POSTGRES_USER=main
+      - POSTGRES_DB=main
