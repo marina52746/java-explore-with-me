@@ -41,7 +41,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
         if (event.getState() != EventState.PUBLISHED)
             throw new IntegrityViolationException("Event isn't published",
                     "User can't participate in not published event");
-        if (event.getParticipantLimit() != null && event.getParticipantLimit() !=0
+        if (event.getParticipantLimit() != null && event.getParticipantLimit() != 0
                 && event.getParticipantLimit() == event.getConfirmedRequests())
             throw new IntegrityViolationException("Reached limit of participants",
                     "Reached limit of participants" + event.getParticipantLimit());
@@ -50,7 +50,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
                 eventId,
                 0L,
                 userId,
-                event.getRequestModeration() && (event.getParticipantLimit() != null && event.getParticipantLimit() !=0)
+                event.getRequestModeration() && (event.getParticipantLimit() != null && event.getParticipantLimit() != 0)
                         ? ParticipationStatus.PENDING : ParticipationStatus.CONFIRMED
         );
         if (request.getStatus() == ParticipationStatus.CONFIRMED)

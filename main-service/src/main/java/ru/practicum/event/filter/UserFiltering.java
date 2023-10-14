@@ -7,28 +7,28 @@ import ru.practicum.event.model.QEvent;
 
 @Component
 public class UserFiltering implements UserFilterBuilder {
-    private final QEvent EVENT = QEvent.event;
+    private final QEvent event = QEvent.event;
 
     public Predicate build(UserFilter filter) {
-        BooleanBuilder builder = new BooleanBuilder(EVENT.isNotNull());
+        BooleanBuilder builder = new BooleanBuilder(event.isNotNull());
         if (!(filter.getText() == null)) {
-            builder.and(EVENT.annotation.containsIgnoreCase(filter.getText())
-                    .or(EVENT.description.containsIgnoreCase(filter.getText())));
+            builder.and(event.annotation.containsIgnoreCase(filter.getText())
+                    .or(event.description.containsIgnoreCase(filter.getText())));
         }
         if (!(filter.getCategories() == null)) {
-            builder.and(EVENT.category.id.in(filter.getCategories()));
+            builder.and(event.category.id.in(filter.getCategories()));
         }
         if (!(filter.getPaid() == null)) {
-            builder.and(EVENT.paid.eq(filter.getPaid()));
+            builder.and(event.paid.eq(filter.getPaid()));
         }
         if (filter.getRangeStart() != null) {
-            builder.and(EVENT.eventDate.after(filter.getRangeStart()));
+            builder.and(event.eventDate.after(filter.getRangeStart()));
         }
         if (filter.getRangeEnd() != null) {
-            builder.and(EVENT.eventDate.before(filter.getRangeEnd()));
+            builder.and(event.eventDate.before(filter.getRangeEnd()));
         }
         if (filter.getOnlyAvailable() != null && filter.getOnlyAvailable()) {
-            builder.and(EVENT.participantLimit.eq(0).or(EVENT.participantLimit.gt(EVENT.confirmedRequests)));
+            builder.and(event.participantLimit.eq(0).or(event.participantLimit.gt(event.confirmedRequests)));
         }
         return builder;
     }

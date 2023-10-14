@@ -323,8 +323,7 @@ public class EventServiceImpl implements EventService {
             if (StateAction.fromStringToStateActionAdmin(updateEvent.getStateAction()) == StateAction.PUBLISH_EVENT) {
                 event.setState(EventState.PUBLISHED);
                 event.setPublishedOn(LocalDateTime.now());
-            }
-            else if (StateAction.fromStringToStateActionAdmin(updateEvent.getStateAction()) == StateAction.REJECT_EVENT)
+            } else if (StateAction.fromStringToStateActionAdmin(updateEvent.getStateAction()) == StateAction.REJECT_EVENT)
                 event.setState(EventState.CANCELED);
         }
         if (updateEvent.getTitle() != null) {
