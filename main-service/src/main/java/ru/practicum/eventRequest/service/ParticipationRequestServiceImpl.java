@@ -17,6 +17,7 @@ import ru.practicum.user.repository.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,14 +36,14 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
         if (requestRepository.findFirstByRequesterAndEvent(userId, eventId) != null)
             throw new IntegrityViolationException("Request already exists",
                     "Request already exists: userId=" + userId + " eventId=" + eventId);
-        if (event.getUser().getId() == userId)
+        if (Objects.equals(event.getUser().getId(), userId))
             throw new IntegrityViolationException("User can't send request to his own event",
                     "User with id=" + userId + " can't send request to his own event with id=" + eventId);
         if (event.getState() != EventState.PUBLISHED)
             throw new IntegrityViolationException("Event isn't published",
                     "User can't participate in not published event");
         if (event.getParticipantLimit() != null && event.getParticipantLimit() != 0
-                && event.getParticipantLimit() == event.getConfirmedRequests())
+                && event.getParticipantLimit().equals(event.getConfirmedRequests()))
             throw new IntegrityViolationException("Reached limit of participants",
                     "Reached limit of participants" + event.getParticipantLimit());
         ParticipationRequest request = new ParticipationRequest(

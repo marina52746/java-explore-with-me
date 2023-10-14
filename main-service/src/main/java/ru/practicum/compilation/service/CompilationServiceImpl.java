@@ -73,7 +73,6 @@ public class CompilationServiceImpl implements CompilationService {
     @Override
     public ResponseEntity<Object> getCompilations(Boolean pinned, Pageable pageable) {
         List<Compilation> compilations;
-        List<CompilationDto> compilationDtos = new ArrayList<>();
         Map<Long, List<Long>> eventIds = new HashMap<>(); //compilationId, eventIds
         List<Long> allEventsIds = new ArrayList<>();
         Map<Long, EventShortDto> eventDtos = new HashMap<>(); //id, eventshortdto

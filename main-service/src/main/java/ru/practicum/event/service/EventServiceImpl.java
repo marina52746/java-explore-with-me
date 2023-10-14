@@ -44,6 +44,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Transactional
@@ -100,7 +101,7 @@ public class EventServiceImpl implements EventService {
         );
         Event event = eventRepository.findById(eventId).orElseThrow(
                 () -> new NotFoundException("Event not found", "Event not found, id=" + eventId));
-        if (event.getUser().getId() != userId)
+        if (!Objects.equals(event.getUser().getId(), userId))
             throw new NotFoundException("Event not user's", "Event not user's, id=" + eventId + " userId =" + userId);
         return new ResponseEntity<>(EventMapper.fromEventToEventFullDto(event), HttpStatus.OK);
     }
@@ -110,7 +111,7 @@ public class EventServiceImpl implements EventService {
         User user = userRepository.findById(userId).orElseThrow(
                 () -> new NotFoundException("User not found", "User not found, id=" + userId));
         var event = eventRepository.findById(eventId);
-        if (event.isEmpty() || event.get().getUser().getId() != userId)
+        if (event.isEmpty() || !Objects.equals(event.get().getUser().getId(), userId))
             throw new NotFoundException("Event not found", "Event not found, id=" + eventId);
         if (event.get().getState() == EventState.PUBLISHED)
             throw new IntegrityViolationException("Can't change PUBLISHED events",
