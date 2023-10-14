@@ -20,6 +20,8 @@ services:
     container_name: stat-db
     ports:
       - "5432:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
       - POSTGRES_PASSWORD=stat
       - POSTGRES_USER=stat
@@ -30,14 +32,13 @@ services:
     image: main-service
     stdin_open: true
     tty: true
+    restart: unless-stopped
     container_name: main-service
     ports:
       - "8080:8080"
     depends_on:
-      - stats-server
       - ewm-db
     environment:
-      - CLIENT_URL=http://stats-server:9090
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ewm-db:5432/main
       - SPRING_DATASOURCE_USERNAME=main
       - SPRING_DATASOURCE_PASSWORD=main
@@ -47,6 +48,8 @@ services:
     container_name: ewm-db
     ports:
       - "5555:5432"
+    volumes:
+      - /var/lib/postgresql/data/
     environment:
       - POSTGRES_PASSWORD=ewmdb
       - POSTGRES_USER=ewmdb
