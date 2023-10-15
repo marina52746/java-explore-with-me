@@ -1,0 +1,1124 @@
+{
+	"info": {
+		"_postman_id": "0032bfbc-7941-4011-a942-fe454c982e8c",
+		"name": "Test Explore With Me - Comments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27687864"
+	},
+	"item": [
+		{
+			"name": "Add users",
+			"item": [
+				{
+					"name": "Add user1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Ivan Ivanov\",\r\n  \"email\": \"ivan@mail.ru\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Petr Petrov\",\r\n  \"email\": \"petr@mail.ru\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add categories",
+			"item": [
+				{
+					"name": "Add category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Походы\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/admin/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add events",
+			"item": [
+				{
+					"name": "Add event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"annotation\": \"Идем в поход в лес с палатками\",\r\n  \"category\": 1,\r\n  \"description\": \"Поход в лес на неделю с палатками\",\r\n  \"eventDate\": \"2024-07-10 12:00:00\",\r\n  \"location\": {\r\n    \"lat\": 50.0,\r\n    \"lon\": 50.0\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 0,\r\n  \"requestModeration\": false,\r\n  \"title\": \"Поход в лес\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/1/events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Add comment1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment wrong user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment wrong event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/99/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"99",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(200); //код ответа должен быть равен 200\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)))))))))))\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment1 text empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment1 user not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)))))))))))\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/99/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"99",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment1 event not exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)))))))))))\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/99/comments/user/1/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"99",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment1 by other user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)))))))))))\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/2/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"2",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment wrong id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"В прошлом году ходили, всем понравилось)))))))))))\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1/comment/99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+									"    pm.response.to.have.status(204); //код ответа должен быть равен 204\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1/comment/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment wrong id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1/comment/99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1",
+								"comment",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment length = 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \":)\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment length = 500",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(201); //код ответа должен быть равен 201 CREATED\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment length < 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \")\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment blank",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"     \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment length > 500",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(400); //код ответа должен быть равен 400\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comment by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(200); //код ответа должен быть равен 200\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comment by id wrong id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(404); //код ответа должен быть равен 404\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments/99",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get comments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+									"    pm.response.to.have.status(200); //код ответа должен быть равен 200\r",
+									"    pm.response.to.be.withBody; // ответ должен содержать тело\r",
+									"    pm.response.to.be.json; // и тело ответа должно быть в формате JSON\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/events/1/comments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
