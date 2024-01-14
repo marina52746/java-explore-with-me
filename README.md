@@ -1,3 +1,3 @@
 # java-explore-with-me
-Template repository for ExploreWithMe project.
-https://github.com/marina52746/java-explore-with-me/pull/6
+Аналог Tinder-a для дружеских встреч - приложение, которое поможет найти человека для поездки в путешествие, похода в кино или другого досуга.  
+*__Стек:__* REST-сервис с использованием Spring Boot, Maven, Lombok.
